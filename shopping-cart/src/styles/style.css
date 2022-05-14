@@ -144,8 +144,7 @@ body {
 }
 
 .app,
-.contact,
-.checkout {
+.contact {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -153,7 +152,7 @@ body {
 
 .app {
     background-image: url('/public/images/samurai-home.jpg');
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -216,14 +215,17 @@ nav {
     width: 50px;
 }
 
-nav a {
+nav a,
+nav h1 {
     color: white;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-nav a:hover {
+nav a:hover,
+nav>h1:hover {
+    cursor: pointer;
     opacity: 0.8;
 }
 
@@ -276,6 +278,15 @@ main {
     right: 30px;
 }
 
+.checkout-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.checkout-icon-cart-home {
+    fill: white;
+}
+
 .checkout-icon-number-home {
     background-color: #cf3a3a;
     width: 25px;
@@ -287,6 +298,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 1.5rem;
 }
 .shop {
     background-image: linear-gradient(to right, #141e30, #243b55);
@@ -297,9 +310,10 @@ main {
 
 .shop-main {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    justify-items: center;
 }
 
 .product {
@@ -309,12 +323,49 @@ main {
     align-items: center;
     gap: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 25vw;
+    background-color: #020003;
+    color: white;
 }
 
 .product-image > img {
-    height: 750px;
-    width: 500px;
+    height: 75vh;
+    width: 25vw;
     object-fit: cover;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 15px;
+}
+
+.product-info h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.product-info h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.product-info button {
+    border: none;
+    padding-block: 15px;
+    color: white;
+    background-color: #cf3a3a;
+    align-self: stretch;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.product-info button:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
 footer {
@@ -333,4 +384,62 @@ footer {
 .github-icon:hover {
     cursor: pointer;
     opacity: 1;
+}
+
+/* MODAL STYLE */
+
+body.active-modal {
+    overflow-y: hidden;
+}
+
+.btn-modal {
+    padding: 10px 20px;
+    display: block;
+    margin: 100px auto 0;
+    font-size: 18px;
+}
+
+.modal,
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+.overlay {
+    background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.4;
+    background: #f1f1f1;
+    padding: 14px 28px;
+    border-radius: 3px;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+.modal-content > h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid #666666;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 7px;
+}
+
+.cart-content-modal {
+    font-size: 1.2rem;
 }
