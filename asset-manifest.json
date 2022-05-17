@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Shopping-Cart/static/css/main.c7606d77.css",
-    "main.js": "/Shopping-Cart/static/js/main.109f58ad.js",
+    "main.js": "/Shopping-Cart/static/js/main.daa3a099.js",
     "static/media/samurai-home.jpg": "/Shopping-Cart/static/media/samurai-home.56e45fdafce1dce95f9f.jpg",
     "static/media/katana-contact.jpg": "/Shopping-Cart/static/media/katana-contact.85f25bc303ebbcf1aaf6.jpg",
     "index.html": "/Shopping-Cart/index.html",
     "main.c7606d77.css.map": "/Shopping-Cart/static/css/main.c7606d77.css.map",
-    "main.109f58ad.js.map": "/Shopping-Cart/static/js/main.109f58ad.js.map"
+    "main.daa3a099.js.map": "/Shopping-Cart/static/js/main.daa3a099.js.map"
   },
   "entrypoints": [
     "static/css/main.c7606d77.css",
-    "static/js/main.109f58ad.js"
+    "static/js/main.daa3a099.js"
   ]
 }
