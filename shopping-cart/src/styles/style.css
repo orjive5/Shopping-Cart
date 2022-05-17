@@ -133,19 +133,26 @@ table {
 
 /* CUSTOM CSS */
 
-body {
+body, html {
     min-height: 100vh;
     width: 100%;
+    min-width: 1250px;
+    min-height: 800px;
+    display: flex;
 }
 
 #root {
     min-height: 100vh;
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .app,
 .contact {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -162,12 +169,19 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100%;
+}
+.main-contact {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15vw;
 }
 
 .contact-info {
-    position: absolute;
-    top: 200px;
-    right: 200px;
+    /* position: absolute;
+    top: 250px;
+    right: 250px; */
     height: 250px;
     width: 500px;
     border: 1px solid white;
@@ -199,6 +213,7 @@ nav {
     color: white;
     display: flex;
     gap: 15px;
+    font-family: 'Macondo', cursive;
 }
 
 .samurai-logo:hover {
@@ -254,6 +269,8 @@ main {
 
 .home-main>p {
     max-width: 500px;
+    font-size: 1.2rem;
+    line-height: 1.2;
 }
 
 .home-main button {
@@ -262,12 +279,12 @@ main {
     border: 2px solid white;
     background-color: transparent;
     font-size: 1rem;
+    font-weight: 700;
     opacity: 0.8;
 }
 
 .home-main button:hover{
     cursor: pointer;
-    font-weight: bold;
     opacity: 1;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -300,6 +317,7 @@ main {
     align-items: center;
     color: white;
     font-size: 1.5rem;
+    font-weight: 500;
 }
 .shop {
     background-image: linear-gradient(to right, #141e30, #243b55);
@@ -319,18 +337,19 @@ main {
 .product {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 25vw;
+    min-width: 370px;
     background-color: #020003;
     color: white;
 }
 
 .product-image > img {
-    height: 75vh;
-    width: 25vw;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -368,6 +387,17 @@ main {
     opacity: 0.8;
 }
 
+.select-quantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.select-quantity button {
+    padding: 5px 10px;
+}
+
 footer {
     color: white;
     height: 70px;
@@ -392,13 +422,6 @@ body.active-modal {
     overflow-y: hidden;
 }
 
-.btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
-}
-
 .modal,
 .overlay {
     width: 100vw;
@@ -408,6 +431,7 @@ body.active-modal {
     right: 0;
     bottom: 0;
     position: fixed;
+    z-index: 1;
 }
 
 .overlay {
@@ -425,6 +449,7 @@ body.active-modal {
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
+    z-index: 1;
 }
 
 .modal-content > h1 {
@@ -433,13 +458,139 @@ body.active-modal {
     border-bottom: 1px solid #666666;
 }
 
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
+.cart-item-info {
+    padding-block: 15px;
+    border-bottom: 1px solid #666666;
 }
 
-.cart-content-modal {
+#items-info-div {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.cart-item-info h1 {
+    font-weight: 600;
+}
+
+.cart-item-info h2 {
+    font-weight: 600;
+}
+
+.continue-or-checkout {
+    display: flex;
+    gap: 15px;
+    margin-left: 15px;
+}
+
+.cart-item-info button {
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #cf3a3a;
+    font-weight: 500;
+}
+
+.checkout-button {
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    background-color: #cf3a3a;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.checkout-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.cart-item-info button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.total-and-checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.total-and-checkout > h2 {
     font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.close-modal {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    padding: 0;
+    border: none;
+}
+
+body.active-payment {
+    overflow-y: hidden;
+}
+
+.successful-payment {
+    position: fixed;
+    top: 30%;
+    left: 37.4%;
+}
+
+.payment-message {
+    position: relative;
+    padding: 50px 100px;
+    background-color: #f1f1f1;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.payment-message>h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.payment-message>h2 {
+    font-weight: 600;
+}
+
+.continue-shopping {
+    align-self: stretch;
+    border: none;
+    padding-block: 10px;
+    color: white;
+    background-color: #cf3a3a;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.continue-shopping:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.close-paid-message {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    padding: 0;
+    border: none;
+}
+
+.checkout-overlay {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    background: rgba(49, 49, 49, 0.8);
+    z-index: 1;
 }

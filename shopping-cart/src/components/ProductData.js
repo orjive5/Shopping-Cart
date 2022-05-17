@@ -7,6 +7,7 @@ let ProductData = [
         price: "399",
         image: 'images/katana-1.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Unique and striking blue steel blade, full-tang battle ready japanese katana samurai sword.',
     },
     {
@@ -15,6 +16,7 @@ let ProductData = [
         price: '399',
         image: 'images/katana-2.jpg',
         inTheCart: false,
+        quantity: 1,
         description: `This red katana samurai sword is a full-tang, battle-ready sword, isn't just a pretty display piece.`,
     },
     {
@@ -23,6 +25,7 @@ let ProductData = [
         price: '399',
         image: 'images/katana-3.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Expertly hand forged by seasoned sword smiths using proven, centuries-old technique.',
     },
     {
@@ -31,6 +34,7 @@ let ProductData = [
         price: '399',
         image: 'images/katana-4.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'High manganese steel blade, golden scabbard, dragon theme tsuba, golden cord handle with white ray-skin wrap.',
     },
     {
@@ -39,6 +43,7 @@ let ProductData = [
         price: '349',
         image: 'images/katana-5.jpg',
         inTheCart: false,
+        quantity: 1,
         description: '1045 carbon steel blade, silver scabbard, round theme tsuba, silver cord handle with black ray-skin wrap.',
     },
     {
@@ -47,6 +52,7 @@ let ProductData = [
         price: '349',
         image: 'images/katana-6.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Unique and striking carbon steel blade, full-tang battle ready japanese katana samurai sword.',
     },
     {
@@ -55,6 +61,7 @@ let ProductData = [
         price: '349',
         image: 'images/katana-7.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Unique and striking blue carbon steel blade, full-tang battle ready japanese katana samurai sword.',
     },
     {
@@ -63,6 +70,7 @@ let ProductData = [
         price: '349',
         image: 'images/katana-8.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Expertly hand forged by seasoned sword-smiths using proven, centuries-old techniques.',
     },
     {
@@ -71,6 +79,7 @@ let ProductData = [
         price: '349',
         image: 'images/katana-9.jpg',
         inTheCart: false,
+        quantity: 1,
         description: 'Black dragon theme lacquered hard wood saya, premium alloy fittings, ray skin, cotton cord wrapped handle',
     },
 ]

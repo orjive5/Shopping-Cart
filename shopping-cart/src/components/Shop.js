@@ -21,7 +21,6 @@ const Shop = (props) => {
         document.body.classList.remove('active-modal')
     }
 
-
     const addToCart = (event) => {
         setAddedToCart(prevAddedToCart => {
             if (prevAddedToCart.includes(event.target.parentNode.id)) {
@@ -30,6 +29,20 @@ const Shop = (props) => {
                 return [...prevAddedToCart, event.target.parentNode.id]
             }
         });
+        setProductData(prevProductData => {
+            for (let i = 0; i < prevProductData.length; i++){
+                if (event.target.parentNode.id === prevProductData[i].id) {
+                    if (document.getElementById(`${event.target.parentNode.id}quantity`).innerHTML !== '1') {
+                                            prevProductData[i].quantity = Number(document.getElementById(
+                        `${event.target.parentNode.id}quantity`
+                    ).innerHTML)
+                    } else {
+                        prevProductData[i].quantity = 1;
+                    }
+                }
+            }
+            return [...prevProductData];
+        })
         toggleModal();
     }
 
@@ -39,8 +52,6 @@ const Shop = (props) => {
             if (prevAddedToCart.includes(event.target.parentNode.id)) {
                 newCartContent = prevAddedToCart.filter(element => element !== event.target.parentNode.id)
             }
-            console.log(event.target.parentNode.id)
-            console.log(newCartContent)
             return [...newCartContent]
         })
     }
@@ -71,14 +82,13 @@ const Shop = (props) => {
     })
 
     const displayCart = productData.map(element => {
-
-
         if (addedToCart.includes(element.id)) {
             return (
-                <div key={element.id} id={element.id}>
-                    <div className="product-image"></div>
+                <div key={element.id} id={element.id} className='cart-item-info'>
                     <h1>{element.title}</h1>
-                    <p>{element.price}$</p>
+                    <p>Item price: {element.price}$</p>
+                    <p>Quantity: {element.quantity}</p>
+                    <h2>For this item: {element.quantity * element.price}$</h2>
                     <button onClick={removeFromCart}>Remove</button>
                 </div>
             )
@@ -89,13 +99,32 @@ const Shop = (props) => {
         let itemPrice = []
         itemPrice = productData.map(element => {
             if (addedToCart.includes(element.id)) {
-                return Number(element.price)
+                return Number(element.price*element.quantity)
             } else {
                 return 0
             }
         })
         let calculatedPrice = itemPrice.reduce((total, num) => total + num)
         return calculatedPrice;
+    }
+
+    const [orderPaid, setOrderPaid] = useState(false)
+
+    const proceedToCheckout = () => {
+        setOrderPaid(!orderPaid)
+        setModal(false)
+        setAddedToCart([]);
+        setProductData(ProductData);
+    }
+
+    const closePaidMessage = () => {
+        setOrderPaid(!orderPaid)
+    }
+
+    if (orderPaid) {
+        document.body.classList.add('active-payment')
+    } else {
+        document.body.classList.remove('active-payment')
     }
 
     return (
@@ -113,7 +142,7 @@ const Shop = (props) => {
                 <Link to='/'>
                     <h1>HOME</h1>
                 </Link>
-                    <h1 onClick={toggleModal}>CHECKOUT</h1>
+                    <h1 onClick={toggleModal}>YOUR CART</h1>
                 <Link to='/contact'>
                     <h1>CONTACT</h1>
                 </Link>
@@ -129,12 +158,30 @@ const Shop = (props) => {
                     <div onClick={toggleModal} className="overlay"></div>
                     <div className="modal-content">
                         <h1>Shopping Cart</h1>
-                        <button onClick={toggleModal} className="close-modal">Close</button>
-                        {displayCart}
-                        {`Total price: ${totalPrice()}$`}
+                        <button onClick={toggleModal} className="close-modal">X</button>
+                        <div id="items-info-div">{displayCart}</div>
+                        <div className="total-and-checkout">
+                            {totalPrice() === 0 ? <h2>Your cart is empty</h2> : <h2>Total price: {totalPrice()}$</h2>}
+                            {totalPrice() !== 0 && (
+                                <div className="continue-or-checkout">
+                                    <button className="checkout-button" onClick={toggleModal}>Continue shopping</button>
+                                    <button className="checkout-button" onClick={proceedToCheckout}>Proceed to checkout</button>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             )}
+            {orderPaid && (
+                <div className="successful-payment">
+                    <div onClick={closePaidMessage} className="checkout-overlay"></div>
+                    <div className="payment-message">
+                        <button onClick={closePaidMessage} className="close-paid-message">X</button>
+                        <h1>CONGRATULATIONS!</h1>
+                        <h2>Your order has been placed</h2>
+                        <button onClick={closePaidMessage} className="continue-shopping">Continue shopping</button>
+                    </div>
+                </div>)}
             <main className="shop-main">
                 {displayProducts}
             </main>
